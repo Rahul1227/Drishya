@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 const VideoTitle = (props) => {
   const { title,overview,rating } = props;
   return (
-    <div className="mt-[15%] p-4"> {/* Add margin-top to ensure it's below the header */}
-      <h1 className="text-4xl font-bold text-black m-5">{title}</h1>
+    <div className="mt-[15%] p-4 text-white"> {/* Add margin-top to ensure it's below the header */}
+      <h1 className="text-4xl font-bold m-5">{title}</h1>
       <h2 className="w-[30%] mx-5">{overview}</h2>
       <h2 className="mx-5 font-bold mt-3">Rating: {rating} ⭐</h2>
       <div>

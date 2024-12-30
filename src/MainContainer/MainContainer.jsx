@@ -29,7 +29,7 @@ const MainContainer = () => {
         rating={vote_average}
         overview={overview}
       />
-      <VideoBackground />
+      <VideoBackground movie_id={id}/>
     </div>
   );
 };
