@@ -22,16 +22,14 @@ const VideoBackground = ({ movie_id }) => {
   }, []);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-[90%] overflow-hidden -z-50 ">
+    <div>
     {key && (
       <iframe
-        className="absolute top-0 left-0 w-full h-full object-cover "
+        className="absolute w-[100%] h-[90%] aspect-video"
         src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${key}`}
-        title="YouTube video player"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
+        
       ></iframe>
     )}
   </div>
