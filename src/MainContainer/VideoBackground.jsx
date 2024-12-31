@@ -8,7 +8,7 @@ const VideoBackground = ({ movie_id }) => {
     <div>
     {key && (
       <iframe
-        className="absolute  w-[100%] h-[90%] aspect-video "
+        className="absolute  w-[100%] h-[90%] aspect-video max-xs:-mt-[140px]"
         src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${key}`}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"

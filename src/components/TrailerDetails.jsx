@@ -9,7 +9,7 @@ const TrailerDetails = () => {
   } = movieDetails;
 
   return (
-    <div className="text-white mt-[650px] absolute z-50 bg-black w-full h-screen">
+    <div className="text-white mt-[650px] absolute z-50 bg-black w-full h-screen max-xs:mt-[420px]">
       <div className="px-8 py-6 space-y-8">
         {/* Title Section */}
         <div className="border-b border-gray-600 pb-4">

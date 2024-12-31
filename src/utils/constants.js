@@ -18,4 +18,9 @@ export const TMDB_CDN='https://image.tmdb.org/t/p/w500/'
 
 export const API_KEY = import.meta.env.VITE_TMDB_KEY;
 
-export const HINDI_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_original_language=hi&sort_by=popularity.desc`;
+export const HINDI_MOVIES_2024 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=hi-IN&region=IN&sort_by=popularity.desc&page=1&primary_release_year=2024&with_original_language=hi`;
+
+export const HINDI_MOVIES_2023 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=hi-IN&region=IN&sort_by=popularity.desc&page=1&primary_release_year=2023&with_original_language=hi`;
+
+export const HINDI_MOVIES_2022 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=hi-IN&region=IN&sort_by=popularity.desc&page=1&primary_release_year=2022&with_original_language=hi`;
+
