@@ -3,7 +3,7 @@ import { TMDB_CDN } from "../utils/constants";
 
 const MovieCard = ({ data }) => {
   return (
-    <div className="shrink-0 w-48 h-64 bg-gray-300 rounded-lg m-2 ">
+    <div className="shrink-0 w-48 h-64 bg-gray-300 rounded-lg m-2 max-xs:w-32 max-xs:h-44 ">
       <img
         className="w-72 h-auto rounded-lg shadow-md hover:scale-110 cursor-pointer"
         src={TMDB_CDN + data}

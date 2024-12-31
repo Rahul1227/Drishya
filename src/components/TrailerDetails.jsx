@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 const TrailerDetails = () => {
   const movieDetails = useSelector((store) => store.movie.movieDetails);
   console.log(movieDetails);
+  if(!movieDetails) return;
 
   const { original_title, overview, tagline, budget,popularity
   } = movieDetails;
