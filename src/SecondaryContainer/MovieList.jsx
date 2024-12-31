@@ -3,10 +3,10 @@ import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 
 const MovieList = ({ title, movie }) => {
-  console.log("The movies  in the movie  list  is", movie);
+//   console.log("The movies  in the movie  list  is", movie);
   return (
     <div>
-      <h1 className="text-white font-bold text-3xl m-4">{title}</h1>
+      <h1 className="text-white font-bold text-3xl m-4 max-xs:text-xl">{title}</h1>
       <div
         className="flex gap-3 overflow-x-auto overflow-y-hidden mb-5 rounded-lg shadow-lg"
         style={{

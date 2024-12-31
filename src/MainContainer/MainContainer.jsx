@@ -4,7 +4,7 @@ import VideoTitle from "./VideoTitle";
 
 const MainContainer = () => {
   const movie = useSelector((store) => store?.movie?.nowPlayingMovies);
-  console.log('the movies in the main container are:', movie)
+  // console.log('the movies in the main container are:', movie)
 
   // Render a loader or fallback while movie data is being fetched
   if (!movie) {

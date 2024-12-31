@@ -15,7 +15,7 @@ const useFetchTrailer=(movie_id)=>{
             ))
     
             const trailer=filterData?filterData[0]:data.results[0];
-            console.log('the trailer details is', trailer)
+            // console.log('the trailer details is', trailer)
     
             setKey(trailer.key)
     
