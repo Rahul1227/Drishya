@@ -2,6 +2,8 @@
 import { useParams } from "react-router-dom"
 
 import useFetchTrailer from "../customHooks/useFetchTrailer";
+import useMovieDetails from "../customHooks/useMovieDetails";
+import TrailerDetails from "./TrailerDetails";
 
 
 
@@ -10,10 +12,12 @@ const Trailer = () => {
     const  {movie_id}=useParams();
     const key=useFetchTrailer(movie_id)
     
+    useMovieDetails(movie_id)
+    
    
     
   return (
-    <div  className="bg-black w-full h-screen">
+    <div  className="bg-black w-full h-screen absolute top-0 left-0">
       
       
     {key && (
@@ -25,6 +29,8 @@ const Trailer = () => {
         
       ></iframe>
     )}
+    <TrailerDetails/>
+    
   </div>
   )
 }

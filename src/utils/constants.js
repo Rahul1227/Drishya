@@ -13,3 +13,6 @@ export const API_OPTIONS={
   };
 
 export const TMDB_CDN='https://image.tmdb.org/t/p/w500/'
+
+
+export const HINDI_MOVIES='https://api.themoviedb.org/3/discover/movie?api_key=9963afe43a83cb1ee351f5d2dab17e34&language=hi-IN&region=IN&sort_by=popularity.desc&page=1&primary_release_year=2018&with_original_language=hi'

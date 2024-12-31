@@ -1,5 +1,6 @@
 
 import useNowPlayingMovies from "../customHooks/useNowPlayingMovies";
+import useTopHindiMovies from "../customHooks/useTopHindiMovies";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
 import useTopRatedSeries from "../customHooks/useTopRatedSeries";
 import useUpcomingMovies from "../customHooks/useUpcomingMovies";
@@ -13,6 +14,7 @@ const Browse = () => {
   useTopRatedMovies();
   useUpcomingMovies();
   useTopRatedSeries();
+  useTopHindiMovies();
 
   
 
