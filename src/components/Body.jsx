@@ -3,6 +3,8 @@ import Login from "./Login";
 import Browse from "./Browse";
 
 import { Error } from "./Error";
+import GptSearch from "../GptSearch/GptSearch";
+import Trailer from "./Trailer";
 
 const Body = () => {
  
@@ -19,6 +21,14 @@ const Body = () => {
       path: "/error",
       element: <Error />,
     },
+    {
+      path:'/gptsearch',
+      element:<GptSearch/>
+    },
+    {
+      path:"/video/:movie_id",
+      element:<Trailer/>
+    }
   ]);
 
  
