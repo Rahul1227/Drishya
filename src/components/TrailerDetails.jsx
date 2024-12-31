@@ -36,7 +36,8 @@ const TrailerDetails = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold border-b border-gray-600 pb-2">Generes</h2>
           <p className="text-lg text-green-400 font-medium">
-            {genres ? genres.map((gen,index)=>(<li>{gen.name}</li>)): "Not available"}
+          {genres ? genres.map((gen) => (<li key={gen.id}>{gen.name}</li>)) : "Not available"}
+
           </p>
         </div>
 

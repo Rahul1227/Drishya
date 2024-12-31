@@ -6,12 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../store/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
+import { setPreLang, toggleGptShow } from "../store/gptSlice";
+import { LANGUAGE_SUPPORTED } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const gptShow = useSelector((store) => store.gpt.gptShow);
+
 
   const handleSignOut = () => {
     signOut(auth)
@@ -25,13 +30,18 @@ const Header = () => {
   };
 
   const handleSearchClick = () => {
-    navigate('/gptsearch');
-    setIsMenuOpen(false);
+    dispatch(toggleGptShow())
+    
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleLanguageChange=(e)=>{
+    e.preventDefault();
+    dispatch(setPreLang(e.target.value))
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -66,12 +76,26 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex">
+            {/* Creating the language option  */}
+            {gptShow &&
+            <div className="my-7 mx-3 py-2 px-3">
+              <select className="w-[120px] h-[40px] bg-rose-600 text-white font-bold rounded-lg px-3 py-2"
+                onChange={handleLanguageChange}
+              
+              >
+                {LANGUAGE_SUPPORTED.map((lan)=>(
+                  <option className="bg-orange-800" key={lan.identifier} value={lan.identifier}>{lan.name}</option>
+                ))}
+                
+              </select>
+            </div>
+}
             <button
-              className="shadow-lg my-7 mx-3 py-2 px-3 bg-purple-500 text-white font-bold
+              className="shadow-lg my-7 mx-3 py-1 px-3 bg-purple-500 text-white font-bold
                 hover:bg-purple-900 hover:-translate-y-1 transition-all duration-100 rounded-lg"
               onClick={handleSearchClick}
             >
-              Try GPT Search
+              {!gptShow?'Try Gpt Search':'Home'}
             </button>
             <img className="w-11 m-7" alt="user-icon" src={NETFLIX_USER_ICON} />
             <button

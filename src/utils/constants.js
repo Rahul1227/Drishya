@@ -24,3 +24,11 @@ export const HINDI_MOVIES_2023 = `https://api.themoviedb.org/3/discover/movie?ap
 
 export const HINDI_MOVIES_2022 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=hi-IN&region=IN&sort_by=popularity.desc&page=1&primary_release_year=2022&with_original_language=hi`;
 
+export const LANGUAGE_SUPPORTED = [
+  { identifier: 'en', name: 'English' },
+  { identifier: 'hi', name: 'Hindi' },
+  { identifier: 'bho', name: 'Bhojpuri' },
+  { identifier: 'awa', name: 'Awadhi' },
+  { identifier: 'tel', name: 'Telugu' }
+];
+
