@@ -5,8 +5,9 @@ const GptMovieSuggestion = () => {
 
   // Handle cases where resMovies is not an array
   if (!Array.isArray(resMovies)) {
-    return <p>Movie suggestions are not available or invalid format.</p>;
+    return <p className="text-center text-xl font-bold py-5">Movie suggestions are not available or invalid format.</p>;
   }
+  
 
   return (
     <div>

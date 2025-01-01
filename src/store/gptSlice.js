@@ -7,6 +7,7 @@ const gptSlice=createSlice({
         gptShow:'false',
         preLang:'en',
         gptResponse:null,
+        searchedMovieDetails:null,
 
     },
     reducers:{
@@ -19,12 +20,16 @@ const gptSlice=createSlice({
 
         setGptResponse:(state,action)=>{
             state.gptResponse=action.payload
+        },
+
+        setSearchedMovieDetails:(state,action)=>{
+            state.searchedMovieDetails=action.payload
         }
     }
 
 })
 
-export const {toggleGptShow, setPreLang, setGptResponse}=gptSlice.actions;
+export const {toggleGptShow, setPreLang, setGptResponse, setSearchedMovieDetails}=gptSlice.actions;
 
 
 export default gptSlice.reducer;
