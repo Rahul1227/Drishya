@@ -5,7 +5,7 @@ const TrailerDetails = () => {
 //   console.log(movieDetails);
   if(!movieDetails) return;
 
-  const { original_title, overview, tagline, budget, genres
+  const { title, overview, tagline, budget, genres
     ,popularity
   } = movieDetails;
 
@@ -14,7 +14,7 @@ const TrailerDetails = () => {
       <div className="px-8 py-6 space-y-8">
         {/* Title Section */}
         <div className="border-b border-gray-600 pb-4">
-          <h1 className="font-bold text-4xl mb-2">{original_title}</h1>
+          <h1 className="font-bold text-4xl mb-2">{title}</h1>
           {tagline && <h4 className="text-lg italic font-light text-gray-300">“{tagline}”</h4>}
         </div>
 

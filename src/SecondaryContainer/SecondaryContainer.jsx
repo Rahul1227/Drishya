@@ -12,7 +12,7 @@ const SecondaryContainer = () => {
   const movies2022 = useSelector((store) => store.movie?.hindiMovies2022);
 
   return (
-    <div className="absolute mt-[650px] left-0 z-50 w-full bg-black max-xs:mt-[450px]">
+    <div className="absolute mt-[600px] left-0 z-50 w-full bg-black max-xs:mt-[450px]">
       <MovieList title={"Top Hindi Movies 2024"} movie={movies2024} />
       <MovieList title={"Top Hindi Movies 2023"} movie={movies2023} />
       <MovieList title={"Top Hindi Movies 2022"} movie={movies2022} />

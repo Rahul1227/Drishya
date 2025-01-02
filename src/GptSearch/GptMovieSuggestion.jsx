@@ -1,26 +1,42 @@
 import { useSelector } from "react-redux";
-import useMovieByName from "../customHooks/useMovieByName";
+import SuggestionMovieCard from "./SuggestionMovieCard";
+import { Link } from "react-router-dom";
 
 const GptMovieSuggestion = () => {
-  const resMovies = useSelector((store) => store.gpt.gptResponse);
-  const data=useMovieByName('puspa')
-  console.log(data);
+  const tmdbMovies = useSelector((store) => store.gpt.searchedMovieDetails);
 
-  // Handle cases where resMovies is not an array
-  if (!Array.isArray(resMovies)) {
-    return <p className="text-center text-xl font-bold py-5">Movie suggestions are not available or invalid format.</p>;
-  }
+  // Check if tmdbMovies is not undefined or null
+  const allMovies = tmdbMovies ? tmdbMovies.flatMap((item) => item.results) : [];
+  console.log("All movies:", allMovies);
 
-  
-  
+  // Remove movies with a null poster_path
+  const moviesWithPoster = allMovies.filter((movie) => movie.poster_path !== null);
+  console.log("Movies with valid poster paths:", moviesWithPoster);
+
+  // Filter Hindi movies
+  const filteredData = moviesWithPoster.filter((movie) => movie.original_language === "hi");
+  console.log("The Hindi movies are:", filteredData);
+
+  // Remove movies with the same title
+  const uniqueMovies = [];
+  const seenTitles = new Set();
+
+  filteredData.forEach((movie) => {
+    if (!seenTitles.has(movie.title)) {
+      uniqueMovies.push(movie);
+      seenTitles.add(movie.title);
+    }
+  });
+
+  console.log("Unique Hindi movies are:", uniqueMovies);
 
   return (
     <div>
-      <ul className="w-1/2 mx-auto py-20 text-2xl font-bold h-fit text-white">
-        {resMovies.map((movie, index) => (
-          <li className='py-5'key={index}>{movie}</li>
-        ))}
-      </ul>
+      {uniqueMovies.map((movie) => (
+          <Link to={`/video/${movie?.id}`} key={movie?.id}>
+               <SuggestionMovieCard movie={movie} />
+          </Link>
+      ))}
     </div>
   );
 };

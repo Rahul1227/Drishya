@@ -62,8 +62,8 @@ const Header = () => {
         {/* Mobile GPT Button */}
         {user && (
           <button
-          className="md:hidden shadow-lg py-1 px-3 bg-purple-500 text-white font-bold mr-4
-          hover:bg-purple-900 transition-all duration-100 rounded-lg absolute right-16"
+          className="md:hidden shadow-lg py-1 px-3 bg-green-500 text-white font-bold mr-4
+          hover:bg-green-900 transition-all duration-100 rounded-lg absolute right-16"
           
             onClick={() => handleMenuItemClick(handleSearchClick)}
           >
@@ -105,8 +105,8 @@ const Header = () => {
               </div>
             )}
             <button
-              className="shadow-lg my-7 mx-3 py-1 px-3 bg-purple-500 text-white font-bold
-                hover:bg-purple-900 hover:-translate-y-1 transition-all duration-100 rounded-lg"
+              className="shadow-lg my-7 mx-3 py-1 px-3 bg-green-500 text-white font-bold
+                hover:bg-green-900 hover:-translate-y-1 transition-all duration-100 rounded-lg"
               onClick={handleSearchClick}
             >
               {!gptShow ? 'Try GPT Search' : 'Home'}
