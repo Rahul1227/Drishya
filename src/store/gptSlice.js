@@ -14,6 +14,10 @@ const gptSlice=createSlice({
         toggleGptShow:(state)=>{
             state.gptShow=!state.gptShow
         },
+        setGptShowFalse: (state) => {
+            state.gptShow = false;
+        },
+         
         setPreLang:(state,action)=>{
             state.preLang=action.payload
         },
@@ -24,12 +28,13 @@ const gptSlice=createSlice({
 
         setSearchedMovieDetails:(state,action)=>{
             state.searchedMovieDetails=action.payload
-        }
+        },
     }
+        
 
 })
 
-export const {toggleGptShow, setPreLang, setGptResponse, setSearchedMovieDetails}=gptSlice.actions;
+export const {toggleGptShow,setGptShowFalse, setPreLang, setGptResponse, setSearchedMovieDetails}=gptSlice.actions;
 
 
 export default gptSlice.reducer;

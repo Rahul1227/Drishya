@@ -14,14 +14,11 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const gptShow = useSelector((store) => store.gpt.gptShow);
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
+      .then(() => {})
       .catch((error) => {
         console.log('error-', error);
         navigate('/error');
@@ -32,17 +29,14 @@ const Header = () => {
     dispatch(toggleGptShow());
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleMenuItemClick = (action) => {
+    setIsMenuOpen(false);
+    action();
   };
 
   const handleLanguageChange = (e) => {
     e.preventDefault();
     dispatch(setPreLang(e.target.value));
-  };
-
-  const handleNewButtonClick = () => {
-    navigate('/new-feature'); // Example functionality for the new button
   };
 
   useEffect(() => {
@@ -54,6 +48,7 @@ const Header = () => {
       } else {
         dispatch(removeUser());
         navigate('/');
+        
       }
     });
     return () => unsubscribe();
@@ -61,25 +56,38 @@ const Header = () => {
 
   return (
     <div className="flex justify-between fixed top-0 left-0 w-full z-10 bg-gradient-to-b from-black">
-      <div>
+      <div className="flex items-center">
         <img src={NETFLIX_TEXT} alt="Netflix" className="w-44 p-5 mx-16 max-xs:mx-1" />
+        
+        {/* Mobile GPT Button */}
+        {user && (
+          <button
+          className="md:hidden shadow-lg py-1 px-3 bg-purple-500 text-white font-bold mr-4
+          hover:bg-purple-900 transition-all duration-100 rounded-lg absolute right-16"
+          
+            onClick={() => handleMenuItemClick(handleSearchClick)}
+          >
+            {!gptShow ? 'New GPT Search' : 'Home'}
+          </button>
+        )}
       </div>
+
       {user && (
         <>
-          {/* Hamburger Menu Button */}
+          {/* Hamburger Menu */}
           <button
             className="md:hidden px-4 py-2 m-4"
-            onClick={toggleMenu}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="w-6 h-0.5 bg-white mb-1"></div>
-            <div className="w-6 h-0.5 bg-white mb-1"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
+            <div className={`w-6 h-0.5 bg-white mb-1 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+            <div className={`w-6 h-0.5 bg-white mb-1 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+            <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center">
             {gptShow && (
-              <div className="my-7 mx-3 py-2 px-3">
+              <div className="my-7 mx-3 py-2 px-3 max-xs:hidden ">
                 <select
                   className="w-[120px] h-[40px] bg-rose-600 text-white font-bold rounded-lg px-3 py-2"
                   onChange={handleLanguageChange}
@@ -101,7 +109,7 @@ const Header = () => {
                 hover:bg-purple-900 hover:-translate-y-1 transition-all duration-100 rounded-lg"
               onClick={handleSearchClick}
             >
-              {!gptShow ? 'Try Gpt Search' : 'Home'}
+              {!gptShow ? 'Try GPT Search' : 'Home'}
             </button>
             <img className="w-11 m-7" alt="user-icon" src={NETFLIX_USER_ICON} />
             <button
@@ -115,25 +123,28 @@ const Header = () => {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-16 right-0 bg-black w-48 py-2 rounded-lg shadow-lg">
-              <button
-                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-                onClick={handleSearchClick}
-              >
-                Try GPT Search
-              </button>
-              <button
-                className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-                onClick={handleNewButtonClick}
-              >
-                New Feature
-              </button>
-              <div className="px-4 py-2">
+            <div className="md:hidden absolute top-16 right-0 bg-black/95 backdrop-blur-sm w-48 py-2 rounded-lg shadow-lg">
+              {gptShow && (
+                <div className="px-4 py-2">
+                  <select
+                    className="w-full bg-rose-600 text-white font-bold rounded-lg px-3 py-2"
+                    onChange={(e) => handleMenuItemClick(() => handleLanguageChange(e))}
+                  >
+                    {LANGUAGE_SUPPORTED.map((lan) => (
+                      <option key={lan.identifier} value={lan.identifier}>
+                        {lan.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <div className="px-4 py-2 flex items-center space-x-2">
                 <img className="w-8" alt="user-icon" src={NETFLIX_USER_ICON} />
+                <span className="text-white">Profile</span>
               </div>
               <button
                 className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800"
-                onClick={handleSignOut}
+                onClick={() => handleMenuItemClick(handleSignOut)}
               >
                 Sign Out
               </button>

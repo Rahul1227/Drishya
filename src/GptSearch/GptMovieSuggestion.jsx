@@ -1,12 +1,17 @@
 import { useSelector } from "react-redux";
+import useMovieByName from "../customHooks/useMovieByName";
 
 const GptMovieSuggestion = () => {
   const resMovies = useSelector((store) => store.gpt.gptResponse);
+  const data=useMovieByName('puspa')
+  console.log(data);
 
   // Handle cases where resMovies is not an array
   if (!Array.isArray(resMovies)) {
     return <p className="text-center text-xl font-bold py-5">Movie suggestions are not available or invalid format.</p>;
   }
+
+  
   
 
   return (
