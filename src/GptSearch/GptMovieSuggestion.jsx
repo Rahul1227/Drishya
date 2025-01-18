@@ -30,6 +30,8 @@ const GptMovieSuggestion = () => {
 
   console.log("Unique Hindi movies are:", uniqueMovies);
 
+ 
+
   return (
     <div>
       {uniqueMovies.map((movie) => (

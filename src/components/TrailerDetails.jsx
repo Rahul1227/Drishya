@@ -6,11 +6,11 @@ const TrailerDetails = () => {
   if(!movieDetails) return;
 
   const { title, overview, tagline, budget, genres
-    ,popularity
+    ,vote_average
   } = movieDetails;
 
   return (
-    <div className="text-white mt-[620px] absolute z-50 bg-black w-full h-screen max-xs:mt-[420px] max-xs:h-fit">
+    <div className="text-white mt-[620px] absolute z-50 bg-black w-full h-fit max-xs:mt-[420px] max-xs:h-fit">
       <div className="px-8 py-6 space-y-8">
         {/* Title Section */}
         <div className="border-b border-gray-600 pb-4">
@@ -45,7 +45,7 @@ const TrailerDetails = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold border-b border-gray-600 pb-2">Popularity</h2>
           <p className="text-lg text-green-400 font-medium">
-            {budget ? popularity : "Not available."}
+            {vote_average ? vote_average +'⭐' : "Not available."}
           </p>
         </div>
       </div>
