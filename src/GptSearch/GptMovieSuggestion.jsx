@@ -7,15 +7,15 @@ const GptMovieSuggestion = () => {
 
   // Check if tmdbMovies is not undefined or null
   const allMovies = tmdbMovies ? tmdbMovies.flatMap((item) => item.results) : [];
-  console.log("All movies:", allMovies);
+  // console.log("All movies:", allMovies);
 
   // Remove movies with a null poster_path
   const moviesWithPoster = allMovies.filter((movie) => movie.poster_path !== null);
-  console.log("Movies with valid poster paths:", moviesWithPoster);
+  // console.log("Movies with valid poster paths:", moviesWithPoster);
 
   // Filter Hindi movies
   const filteredData = moviesWithPoster.filter((movie) => movie.original_language === "hi");
-  console.log("The Hindi movies are:", filteredData);
+  // console.log("The Hindi movies are:", filteredData);
 
   // Remove movies with the same title
   const uniqueMovies = [];

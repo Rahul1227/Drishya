@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { NETFLIX_TEXT, NETFLIX_USER_ICON } from "../utils/constants";
+import { NETFLIX_USER_ICON } from "../utils/constants";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import { addUser, removeUser } from "../store/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { setPreLang, toggleGptShow } from "../store/gptSlice";
 import { LANGUAGE_SUPPORTED } from "../utils/constants";
+import LOGO from '../assets/Logo.png'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const Header = () => {
   return (
     <div className="flex justify-between fixed top-0 left-0 w-full z-10 bg-gradient-to-b from-black">
       <div className="flex items-center">
-        <img src={NETFLIX_TEXT} alt="Netflix" className="w-44 p-5 mx-16 max-xs:mx-1" />
+        <img src={LOGO} alt="Netflix" className="w-80 p-5 mx-16 max-xs:mx-1 max-xs:w-44 " />
         
         {/* Mobile GPT Button */}
         {user && (
