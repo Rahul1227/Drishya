@@ -2,7 +2,7 @@
 
 Welcome to **Drishya**, a modern and intuitive movie exploration platform where you can **discover trailers and descriptions** of the latest and upcoming movies in both **English and Hindi**. Drishya is your gateway to the cinematic universe — think of it as a **Netflix-style app**, but solely focused on helping you explore what’s coming next on the big screen.
 
-**🎥 Live Demo:** [Experience Drishya](https://incandescent-lolly-e80086.netlify.app/browse)
+**🎥 Live Demo:** [Experience Drishya](https://incandescent-lolly-e80086.netlify.app)
 
 ---
 
